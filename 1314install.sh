@@ -429,7 +429,11 @@ domain_check() {
     domain="13149388.freeice.buzz"
     domain_ip=$(ping "${domain}" -c 1 | sed '1{s/[^(]*(//;s/).*//;q}')
     echo -e "${OK} ${GreenBG} 正在获取 公网ip 信息，请耐心等待 ${Font}"
-    local_ip=$(curl -4 ip.sb)
+    #local_ip=$(curl -4 ip.sb)
+
+    # by ice, 2020/7/21
+    local_ip=$(curl ifconfig.me)
+
     echo -e "域名dns解析IP：${domain_ip}"
     echo -e "本机IP: ${local_ip}"
     sleep 2
